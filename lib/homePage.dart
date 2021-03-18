@@ -2,6 +2,7 @@ import 'package:doctor_app/dashboardPage.dart';
 import 'package:flutter/material.dart';
 import 'dashboardPage.dart';
 import 'calendarWidget.dart';
+import 'patientListPage.dart';
 
 class homePage extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _homePageState extends State<homePage> {
   final List<Widget> tabs = [
     dashboardPage(),
     CalendarPage(),
-    dashboardPage(),
+    patientListPage(),
   ];
 
   @override

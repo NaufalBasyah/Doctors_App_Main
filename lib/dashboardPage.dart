@@ -79,23 +79,23 @@ class dashboardPage extends StatelessWidget {
                                         DataCell(Text('10.00 AM')),
                                         DataCell(Text('10.30 AM')),
                                         DataCell(Text('John Doe')),
-                                        DataCell(Text('Something'))
+                                        DataCell(Text('eConsulting'))
                                       ],
                                     ),
                                     DataRow(
                                       cells: [
-                                        DataCell(Text('10.00 AM')),
-                                        DataCell(Text('10.30 AM')),
-                                        DataCell(Text('John Doe')),
-                                        DataCell(Text('Something'))
+                                        DataCell(Text('11.00 AM')),
+                                        DataCell(Text('11.30 AM')),
+                                        DataCell(Text('Jane Doe')),
+                                        DataCell(Text('eConsulting'))
                                       ],
                                     ),
                                     DataRow(
                                       cells: [
-                                        DataCell(Text('10.00 AM')),
-                                        DataCell(Text('10.30 AM')),
+                                        DataCell(Text('12.30 PM')),
+                                        DataCell(Text('13.30 PM')),
                                         DataCell(Text('John Doe')),
-                                        DataCell(Text('Something'))
+                                        DataCell(Text('OutPatient'))
                                       ],
                                     ),
                                   ]
