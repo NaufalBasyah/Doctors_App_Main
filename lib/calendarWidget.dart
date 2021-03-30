@@ -18,7 +18,7 @@ class CalendarPage extends StatelessWidget {
     return MaterialApp(
       title: 'Table Calendar Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Table Calendar Demo'),
     );
@@ -160,16 +160,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.deepOrange[400],
-        todayColor: Colors.deepOrange[200],
-        markersColor: Colors.brown[700],
+        selectedColor: Colors.blue[800],
+        todayColor: Colors.blue[400],
+        markersColor: Colors.black,
         outsideDaysVisible: false,
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
         TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
+          color: Colors.blue[800],
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
@@ -213,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             child: Container(
               margin: const EdgeInsets.all(4.0),
               padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-              color: Colors.deepOrange[300],
+              color: Colors.blue[400],
               width: 100,
               height: 100,
               child: Text(
@@ -309,47 +309,27 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
     return Column(
       children: <Widget>[
+        const SizedBox(height: 10.0),
+        // RaisedButton(
+        //   child: Text(
+        //       'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
+        //   onPressed: () {
+        //     _calendarController.setSelectedDay(
+        //       DateTime(dateTime.year, dateTime.month, dateTime.day),
+        //       runCallback: true,
+        //     );
+        //   },
+        // ),
         Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            RaisedButton(
-              child: Text('Month'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('2 weeks'),
-              onPressed: () {
-                setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('Week'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
-                });
-              },
-            ),
+            Text("    Appointment(s) on this date",
+            style: TextStyle(fontWeight: FontWeight.bold,
+            fontSize: 16,
+            ))
+
           ],
-        ),
-        const SizedBox(height: 8.0),
-        RaisedButton(
-          child: Text(
-              'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
-          onPressed: () {
-            _calendarController.setSelectedDay(
-              DateTime(dateTime.year, dateTime.month, dateTime.day),
-              runCallback: true,
-            );
-          },
         ),
       ],
     );

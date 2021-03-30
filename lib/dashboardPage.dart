@@ -1,4 +1,5 @@
 import 'package:doctor_app/logInPage.dart';
+import 'package:doctor_app/newAppointmentPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'roundedButton.dart';
@@ -48,6 +49,19 @@ class dashboardPage extends StatelessWidget {
                        ]
                       )
                     )
+                  ),
+                  RoundedButton(
+                    text: "Make New Appointment",
+                    press: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(
+                          builder: (context){
+                            return newAppointmentPage();
+                          }
+                      )
+                      );
+
+                    },
                   ),
                   Container(
                       height: size.height*0.38,
@@ -106,7 +120,7 @@ class dashboardPage extends StatelessWidget {
                       )
                   ),
                   Container(
-                      height: size.height*0.28,
+                      height: size.height*0.18,
                       child:Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
@@ -119,21 +133,18 @@ class dashboardPage extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                     )
                                 ),
-                                ListView(
-                                  shrinkWrap: true,
-                                  children: <Widget> [
-                                    Card(
-                                      child: ListTile(
-                                        leading: FlutterLogo(size: 37.0),
-                                        title: Text('Random News About Stuff'),
-                                        subtitle: Text('Blablablablablablablablablabla'),
-                                        // trailing: Icon(Icons.beenhere_outlined),
-                                      ),
+                                SingleChildScrollView(
+                                  child:  Card(
+                                    child: ListTile(
+                                      leading: FlutterLogo(size: 28.0),
+                                      title: Text('Random News About Stuff'),
+                                      subtitle: Text('Blablablablablablablablablabla'),
+                                      // trailing: Icon(Icons.beenhere_outlined),
                                     ),
+                                  ),
+                                ),
 
-                                  ]
 
-                                )
 
                                ]
                           )

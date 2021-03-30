@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dummy_users.dart';
 import 'roundedButton.dart';
+import 'mysql.dart';
 
 
 class patientListPage extends StatefulWidget {
@@ -9,12 +9,21 @@ class patientListPage extends StatefulWidget {
 }
 
 class _patientListPageState extends State<patientListPage> {
-  List<User> users;
-  @override
-  void initState(){
-    users = User.getUsers();
-    super.initState();
+  var db = new Mysql();
+  var patientList = [];
+  void getPatients(){
+    db.getConnection().then((conn) {
+      String sql = 'select pid, fname, lname, email from patient_data;';
+      conn.query(sql).then((results){
+        for (var row in results){
+          setState(() {
+            patientList.add(row);
+          });
+        }
+      });
+    });
   }
+  @override
   DataTable patientDataTable(){
     return DataTable(
       columns: [
@@ -34,17 +43,21 @@ class _patientListPageState extends State<patientListPage> {
             tooltip: "Patient Phone Number"
         )
       ],
-      rows: users.map(
+      rows: patientList.map(
               (user) => DataRow(
+                onSelectChanged: (b){},
                 cells: [
                   DataCell(
-                    Text(user.pID)
+                      Text(user[0].toString()),
+                      onTap: (){
+
+                      },
                   ),
                   DataCell(
-                      Text(user.fullName)
+                      Text(user[1]+" "+user[2])
                   ),
                   DataCell(
-                      Text(user.phoneNum)
+                      Text(user[3])
                   ),
                 ]
               )
@@ -60,7 +73,7 @@ class _patientListPageState extends State<patientListPage> {
           height: size.height,
           width: double.infinity,
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget> [
               Card(
@@ -76,7 +89,15 @@ class _patientListPageState extends State<patientListPage> {
                         fontSize: 28,
                       )
                     ),
-                    patientDataTable(),
+                    RoundedButtonMini(text: "Refresh",
+                        press: getPatients),
+                    SizedBox(height: size.height*0.02),
+                    Container(
+                      height: size.height*.59,
+                      child:SingleChildScrollView(
+                        child:patientDataTable() ,
+                      )
+                    ),
                     SizedBox(height: size.height*0.03),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,

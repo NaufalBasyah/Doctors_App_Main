@@ -16,7 +16,7 @@ class welcomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget> [
                   Text(
-                      "Welcome to \n the Doctor's App",
+                      "Welcome to",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -25,8 +25,8 @@ class welcomePage extends StatelessWidget {
                       )
                   ),
                   SizedBox( height: size.height * 0.02),
-                  SvgPicture.asset(
-                      "Assets/Images/hospital.svg",
+                  Image.asset(
+                      "Assets/Images/Transparent_PNG/Colour-03.png",
                       height: size.height * 0.4
                   ),
                   SizedBox( height: size.height * 0.02),

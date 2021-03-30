@@ -1,4 +1,5 @@
 import 'package:doctor_app/dashboardPage.dart';
+import 'package:doctor_app/mysqlTryPage.dart';
 import 'package:flutter/material.dart';
 import 'dashboardPage.dart';
 import 'calendarWidget.dart';
@@ -17,6 +18,7 @@ class _homePageState extends State<homePage> {
     dashboardPage(),
     CalendarPage(),
     patientListPage(),
+    // mysqlTryPage(),
   ];
 
   @override
@@ -25,7 +27,7 @@ class _homePageState extends State<homePage> {
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        backgroundColor: Colors.red[600],
+        backgroundColor: Colors.blue[800],
         // iconSize: 13,
         // selectedFontSize: 13,
         // unselectedFontSize: 0,
@@ -42,7 +44,7 @@ class _homePageState extends State<homePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.perm_contact_cal_rounded),
             label: "Patients",
-          )
+          ),
         ],
         onTap: (int index) {
           setState(() {
