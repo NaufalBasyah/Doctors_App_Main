@@ -64,6 +64,11 @@ class _patientListPageState extends State<patientListPage> {
       ).toList(),
     );
   }
+  @override
+  void initState(){
+    super.initState();
+    getPatients();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +94,6 @@ class _patientListPageState extends State<patientListPage> {
                         fontSize: 28,
                       )
                     ),
-                    RoundedButtonMini(text: "Refresh",
-                        press: getPatients),
                     SizedBox(height: size.height*0.02),
                     Container(
                       height: size.height*.59,
