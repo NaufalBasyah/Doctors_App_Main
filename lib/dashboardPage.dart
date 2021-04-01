@@ -3,6 +3,7 @@ import 'package:doctor_app/newAppointmentPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'roundedButton.dart';
+import 'editProfilePage.dart';
 
 class dashboardPage extends StatelessWidget {
   @override
@@ -42,7 +43,15 @@ class dashboardPage extends StatelessWidget {
                                 SizedBox(height: size.height*0.005),
                               RoundedButtonMini(
                                 text: "Edit My Profile",
-                                press: () {},
+                                press: () {
+                                  Navigator.push(
+                                      context, MaterialPageRoute(
+                                      builder: (context){
+                                        return EditProfile();
+                                      }
+                                  )
+                                  );
+                                },
                               )
                             ]
                           )

@@ -10,7 +10,7 @@ class newPatientPage extends StatefulWidget {
 
 class _newPatientPageState extends State<newPatientPage> {
   String pickedTitle;
-  List<String> titles=['Mr','Mrs'];
+  List<String> titles=['Mr','Mrs','Ms'];
   String fname;
   String lname;
   DateTime dob;
