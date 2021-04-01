@@ -1,10 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'constraint.dart';
 import 'roundedButton.dart';
-import 'roundedInputField.dart';
-import 'roundedPasswordField.dart';
 import 'mysql.dart';
-
+import 'package:intl/intl.dart';
 
 class newAppointmentPage extends StatefulWidget {
   @override
@@ -45,10 +43,13 @@ class _newAppointmentPageState extends State<newAppointmentPage> {
 
   List<int> durationOption = [15, 30, 45, 60];
   int pickedDuration;
+  List<bool> isSelected;
+  String appType;
   @override
   void initState(){
     super.initState();
     getNames();
+    isSelected = [true, false];
   }
   @override
   Widget build(BuildContext context) {
@@ -134,7 +135,8 @@ class _newAppointmentPageState extends State<newAppointmentPage> {
                                                 lastDate: DateTime(2023)
                                             ).then((date){
                                               setState((){
-                                                _dateTime = date;
+                                                DateTime temp = new DateTime(date.year,date.month,date.day);
+                                                _dateTime = temp;
                                               });
                                             });
                                           }
@@ -205,32 +207,53 @@ class _newAppointmentPageState extends State<newAppointmentPage> {
                           ),
                         ]
                     )
-                  )
-                  // Container(
-                  //   height: size.height*0.1,
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: <Widget> [
-                  //         Text("Appointment Type: "),
-                  //         Column(
-                  //             children: <Widget> [
-                  //               RadioListTile(
-                  //                 value: 1,
-                  //                 groupValue: 0,
-                  //                 title: Text("eConsulting"),
-                  //                 onChanged: (val){
-                  //
-                  //                 },
-                  //                 activeColor: Colors.blue[800],
-                  //               )
-                  //             ]
-                  //         )
-                  //       ]
-                  //   ),
-                  // ),
-                  ,RoundedButton(
+                  ),
+                  SizedBox( height: size.height * 0.01),
+            ToggleButtons(
+              borderColor: Colors.black,
+              fillColor: Colors.blue[800],
+              borderWidth: 2,
+              selectedBorderColor: Colors.black,
+              selectedColor: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    'eConsulting',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    'OutPatient',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ],
+              onPressed: (int index) {
+                setState(() {
+                  for (int i = 0; i < isSelected.length; i++) {
+                    isSelected[i] = i == index;
+                    if (isSelected[0] == true){
+                      appType = "eConsulting";
+                    }else{
+                      appType = "OutPatient";
+                    }
+                    // print(appType);
+                  }
+                });
+              },
+              isSelected: isSelected,
+            ),
+                  SizedBox( height: size.height * 0.01),
+
+                  RoundedButton(
                     text: "Confirm",
-                    press: () {},
+                    press: () {
+                      print(pickedPatient+" "+_dateTime.toString()+" "+_time.format(context).toString()+" "+pickedDuration.toString()+" "+appType);
+                    },
                   ),
                 ]
             )

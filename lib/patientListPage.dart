@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'roundedButton.dart';
 import 'mysql.dart';
+import 'newPatientPage.dart';
 
 
 class patientListPage extends StatefulWidget {
@@ -116,6 +117,13 @@ class _patientListPageState extends State<patientListPage> {
                         RoundedButtonMini(
                           text: "Add New",
                           press: () {
+                            Navigator.push(
+                                context, MaterialPageRoute(
+                                builder: (context){
+                                  return newPatientPage();
+                                }
+                            )
+                            );
 
                           },
 
