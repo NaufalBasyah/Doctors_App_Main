@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "constraint.dart";
 
 
 class EditProfile extends StatefulWidget {
@@ -119,11 +120,11 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: kPrimaryColor,
         title: Text(
           "Edit Profile",
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         actions: <Widget>[
@@ -132,7 +133,7 @@ class _EditProfileState extends State<EditProfile> {
             icon: Icon(
               Icons.done,
               size: 30.0,
-              color: Colors.green,
+              color: Colors.green[600],
             ),
           ),
         ],
@@ -172,27 +173,17 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 RaisedButton(
+                  color: kPrimaryColor,
                   onPressed: () => print('update profile data'),
                   child: Text(
                     "Update Profile",
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: Colors.white,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.all(16.0),
-                //   child: FlatButton.icon(
-                //     onPressed: () => print('logout'),
-                //     icon: Icon(Icons.cancel, color: Colors.red),
-                //     label: Text(
-                //       "Logout",
-                //       style: TextStyle(color: Colors.red, fontSize: 20.0),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),

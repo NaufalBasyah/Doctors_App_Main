@@ -45,3 +45,29 @@ class TextFieldContainerMini extends StatelessWidget {
     );
   }
 }
+
+class TextFieldContainerCustom extends StatelessWidget {
+  final Widget child;
+  final double rad;
+  final double sizeMulti;
+  const TextFieldContainerCustom({
+    Key key,
+    this.child,
+    this.rad = 29,
+    this.sizeMulti = 0.4
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      width: size.width * sizeMulti,
+      decoration: BoxDecoration(
+        color: kPrimaryLight,
+        borderRadius: BorderRadius.circular(rad),
+      ),
+      child: child,
+    );
+  }
+}

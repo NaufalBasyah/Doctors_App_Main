@@ -62,3 +62,40 @@ class RoundedInputFieldMini extends StatelessWidget {
   }
 }
 
+class RoundedInputFieldCustom extends StatelessWidget {
+  final String hintText;
+  final IconData icon;
+  final ValueChanged<String> onChanged;
+  final double rad;
+  final double sizeMulti;
+  const RoundedInputFieldCustom({
+    Key key,
+    this.hintText,
+    this.icon = Icons.person,
+    this.onChanged,
+    this.rad = 29,
+    this.sizeMulti = 0.4
+  }) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFieldContainerCustom(
+      rad: rad,
+      sizeMulti: sizeMulti,
+      child: TextField(
+        onChanged: onChanged,
+        cursorColor: kPrimaryColor,
+        decoration: InputDecoration(
+          icon: Icon(
+            icon,
+            color: kPrimaryColor,
+          ),
+          hintText: hintText,
+          border: InputBorder.none,
+        ),
+      ),
+    );
+  }
+}
+

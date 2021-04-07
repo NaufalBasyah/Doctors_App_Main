@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:mysql1/mysql1.dart';
 
 class Mysql {
-  static String host = '******',
-      user = '******',
-      password = '******',
-      db = 'demo_demo';
+  static String host = '*******',
+      user = '*******',
+      password = '*******',
+      db = '*******';
   static int port = 3306;
 
   Mysql();

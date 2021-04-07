@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'mysql.dart';
 import 'roundedInputField.dart';
 import 'roundedButton.dart';
@@ -44,14 +45,14 @@ class _newPatientPageState extends State<newPatientPage> {
                   SizedBox( height: size.height * 0.008),
                   Container(
                       height: size.height*0.38,
-                      padding: const EdgeInsets.fromLTRB(45.0,0,0,0),
+                      padding: const EdgeInsets.fromLTRB(15.0,0,0,0),
                       alignment: Alignment.center,
                       child:Column(
                           children: <Widget>[
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget> [
-                                  Text("Title   :  ",
+                                  Text("       Title     :  ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,
@@ -86,7 +87,9 @@ class _newPatientPageState extends State<newPatientPage> {
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget> [
-                                  RoundedInputFieldMini(
+                                  RoundedInputFieldCustom(
+                                    rad: 15,
+                                    sizeMulti: 0.4,
                                     hintText: "First Name",
                                     onChanged: (value) {
                                       setState(() {
@@ -95,7 +98,9 @@ class _newPatientPageState extends State<newPatientPage> {
                                     },
                                   ),
                                   SizedBox(width: size.width*0.03)
-                                  ,RoundedInputFieldMini(
+                                  ,RoundedInputFieldCustom(
+                                    rad: 15,
+                                    sizeMulti: 0.4,
                                     hintText: "Last Name",
                                     onChanged: (value) {
                                       setState(() {
@@ -110,7 +115,7 @@ class _newPatientPageState extends State<newPatientPage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget> [
-                                  Text("DOB      :  ",
+                                  Text("       DOB      :  ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,
@@ -127,7 +132,7 @@ class _newPatientPageState extends State<newPatientPage> {
                                                   context: context,
                                                   initialDate: DateTime.now(),
                                                   firstDate: DateTime(1910),
-                                                  lastDate: DateTime(DateTime.now().year)
+                                                  lastDate: DateTime(2022)
                                               ).then((date){
                                                 setState((){
                                                   dob = date;
@@ -143,7 +148,7 @@ class _newPatientPageState extends State<newPatientPage> {
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget> [
-                                  Text("Sex     :  ",
+                                  Text("       Sex      :  ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,
